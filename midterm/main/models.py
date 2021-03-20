@@ -3,29 +3,6 @@ from django.db import models
 # Create your models here.
 
 
-class Users(models.Model):
-    login = models.CharField(max_length=255, null=True,
-                             blank=True, verbose_name='Login')
-    password = models.CharField(max_length=255, null=True,
-                                blank=True, verbose_name='Password')
-
-    class Meta:
-        verbose_name = 'User'
-        verbose_name_plural = 'Users'
-
-
-class UserProfile(models.Model):
-    first_name = models.CharField(max_length=255, null=True,
-                                  blank=True, verbose_name='First_name')
-    last_name = models.CharField(max_length=255, null=True,
-                                 blank=True, verbose_name='Last_name')
-    user = models.ForeignKey(
-        Users, on_delete=models.RESTRICT, related_name='user', verbose_name='user')
-
-    class Meta:
-        verbose_name = 'UserProfile'
-        verbose_name_plural = 'UserProfiles'
-
 
 class BookJournalBase(models.Model):
     name = models.CharField(max_length=255, null=True,
@@ -48,7 +25,7 @@ class Book(models.Model):
     genre = models.CharField(max_length=255, null=True,
                              blank=True, verbose_name='genre')
     BookJournalBase = models.ForeignKey(
-        BookJournalBase, on_delete=models.RESTRICT, related_name='BookJournalBase', verbose_name='BookJournalBase')
+        BookJournalBase, on_delete=models.RESTRICT, related_name='Books', verbose_name='BookJournalBase')
 
     class Meta:
         verbose_name = 'Book'
@@ -61,7 +38,7 @@ class Journal(models.Model):
     publisher = models.CharField(max_length=255, null=True,
                                  blank=True, verbose_name='Name')
     BookJournalBase = models.ForeignKey(
-        BookJournalBase, on_delete=models.RESTRICT, related_name='BookJournalBase', verbose_name='BookJournalBase')
+        BookJournalBase, on_delete=models.RESTRICT, related_name='Journal', verbose_name='BookJournalBase')
 
     class Meta:
         verbose_name = 'Journal'
