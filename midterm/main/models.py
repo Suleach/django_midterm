@@ -3,7 +3,6 @@ from django.db import models
 # Create your models here.
 
 
-
 class BookJournalBase(models.Model):
     name = models.CharField(max_length=255, null=True,
                             blank=True, verbose_name='Name')
