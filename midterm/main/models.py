@@ -20,7 +20,7 @@ class UserProfile(models.Model):
     last_name = models.CharField(max_length=255, null=True,
                                  blank=True, verbose_name='Last_name')
     user = models.ForeignKey(
-        users, on_delete=models.RESTRICT, related_name='user', verbose_name='user')
+        Users, on_delete=models.RESTRICT, related_name='user', verbose_name='user')
 
     class Meta:
         verbose_name = 'UserProfile'
@@ -55,7 +55,7 @@ class Book(models.Model):
         verbose_name_plural = 'Books'
 
 
-class Journal(model.Model):
+class Journal(models.Model):
     type_ = models.CharField(max_length=255, null=True,
                              blank=True, verbose_name='Name')
     publisher = models.CharField(max_length=255, null=True,
